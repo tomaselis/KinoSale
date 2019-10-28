@@ -18,7 +18,7 @@ class AccountController extends Controller
     public function registration()
     {
         //load registration form
-        $form = new \App\Helper\FormHelper(url('account/create'), 'post', 'wrapper');
+        $form = new \App\Helper\FormHelper(url('account/create'), 'post', 'wrapperReg');
         $form->addInput([
             'name' => 'name',
             'type' => 'text',
@@ -28,21 +28,20 @@ class AccountController extends Controller
                 'name' => 'email',
                 'type' => 'email',
                 'placeholder' => 'email@email.com',
+                'class' => 'email'
             ])
             ->addInput([
                 'name' => 'password',
                 'type' => 'password',
                 'placeholder' => 'Type in password',
+                'class' => 'password'
             ])
             ->addInput([
                 'name' => 'password2',
                 'type' => 'password',
                 'placeholder' => 'Repeat password',
+                'class' => 'password2'
             ])
-//            ->addSelect([
-//                1 => 'admin',
-//                2 => 'master admin',
-//                3 => 'user'], 'city')
             ->addButton([
                 'name' => 'register',
                 'type' => 'submit',
@@ -54,7 +53,7 @@ class AccountController extends Controller
 
     public function login()
     {
-        $form = new \App\Helper\FormHelper(url('account/auth'), 'post', 'wrapper');
+        $form = new \App\Helper\FormHelper(url('account/auth'), 'post', 'wrapperReg');
         $form->addInput([
             'name' => 'email',
             'placeholder' => 'email@email.lt',
@@ -78,6 +77,7 @@ class AccountController extends Controller
 
     public function create()
     {
+
         if (inputHelper::checkEmail($_POST['email'])) {
             if (InputHelper::PasswordMatch($_POST['password'], $_POST['password2'])) {
                 $accountModelObject = new \App\Model\UsersModel();
@@ -89,9 +89,12 @@ class AccountController extends Controller
                 $accountModelObject->setActive(1);
                 $accountModelObject->save();
                 $helper = new Helper();
-                $helper->redirect('');
+                $helper->redirect(url('post'));
+
             }
+
         }
+
     }
 
     public function auth()
@@ -125,6 +128,7 @@ class AccountController extends Controller
                 }
             }
             //Neteisingas prisijungimas
+
             //redirect i admin
         }
     }
@@ -133,7 +137,18 @@ class AccountController extends Controller
     {
         session_destroy();
         $helper = new Helper();
-        $helper->redirect('post/');
+        $helper->redirect(url('post/'));
+    }
+
+    public function verify(){
+        $response = [];
+        $email = $_POST['belekoks_email'];
+       if (!inputHelper::uniqueEmail($email)){
+           $response['code'] = 500;
+       } else{
+           $response['code'] = 200;
+       }
+       echo json_encode($response);
     }
 
 }

@@ -1,0 +1,3 @@
+cd sk<?php
+
+phpinfo();

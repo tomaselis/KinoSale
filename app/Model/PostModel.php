@@ -13,6 +13,7 @@ class PostModel
     private $image;
     private $authorId;
     private $db;
+    private $active;
 
 
 
@@ -67,6 +68,12 @@ class PostModel
         return $this->authorId;
     }
 
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+
     public static function getPosts()
     {
         $db = new Database();
@@ -84,6 +91,8 @@ class PostModel
         $this->content = $post->content;
         $this->authorId = $post->author_id;
         $this->image = $post->img;
+        $this->active = $post->active;
+        return $this;
     }
 
 
@@ -119,8 +128,7 @@ class PostModel
 
     public function save($id = null)
     {
-        if($id !== null){
-            $this->id = $id;
+        if($this->id){
             $this->update();
         }else{
             $this->create();
@@ -136,5 +144,36 @@ class PostModel
         $this->db->update('post', $setContent)->where('id',$id);
         $this->db->get();
     }
+
+    public function getCategories()
+    {
+        $this->db->select('category_id')
+            ->from('category_posts')
+            ->where('post_id', $this->id);
+
+        return $this->db->getAll();
+    }
+
+    public function setCategories($categories)
+    {
+        $this->db->delete()->from('category_posts')
+            ->where('post_id', $this->id)->get();
+        $columns = 'category_id, post_id';
+        foreach($categories as $category){
+            $values = "'$category', '$this->id'";
+            $this->db->insert('category_posts', $columns, $values)
+                ->get();
+        }
+    }
+
+    public static function getSearchResults($keyword)
+    {
+        $db = new Database();
+        $db->select()->from('post')->whereLike('title', $keyword)->andWhere('active', 1);
+        return $db->getAll();
+    }
+
+
+
 }
 

@@ -42,6 +42,12 @@ class Database
         return $this;
     }
 
+    public function whereLike($fieldName, $value)
+    {
+        $this->sql .= ' WHERE ' . $fieldName . ' LIKE' . "'%$value%'";
+        return $this;
+    }
+
     public function insert($tableName, $tableFields, $values){
         $this->sql .= "INSERT INTO ".$tableName." (".$tableFields.")"." VALUES "."(".$values.")";
         return $this;
@@ -59,8 +65,8 @@ class Database
         $this->sql .= " AND $fieldName = '$value'";
         return $this;
     }
-    public function delete($table){
-        $this->sql .= 'DELETE '.$table;
+    public function delete(){
+        $this->sql .= 'DELETE ';
         return $this;
     }
 
@@ -78,10 +84,16 @@ class Database
     public function getAll(){
         $stmt = $this->execute();
         $data = [];
-        while ($row = $stmt->fetchObject()){
+        while($row = $stmt->fetchObject()){
             $data[] = $row;
         }
         return $data;
+//        $stmt = $this->execute();
+//        $data = [];
+//        while ($row = $stmt->fetchObject()){
+//            $data[] = $row;
+//        }
+//        return $data;
     }
 
     public function get(){

@@ -13,5 +13,6 @@
 <!--</form>-->
 
 <h2 class="headings">PLEASE REGISTER</h2>
+<div class="msg-block"></div>
 <?php
 echo $this->form;

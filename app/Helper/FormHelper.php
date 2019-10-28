@@ -4,12 +4,12 @@ namespace App\Helper;
 
 class FormHelper
 {
-    public function __construct($action, $method, $class)
+    public function __construct($action, $method, $class, $param = '')
     {
-        $this->html = '<form class="'.$class.'" action="'.$action.'" method="'.$method.'">';
+        $this->html = '<form class="'.$class.'" action="'.$action.'" method="'.$method.'"'.$param.'>';
     }
 
-    public function addInput($attributes, $label='', $class='')
+    public function addInput($attributes, $label='', $class='', $param = '')
     {
         //implementuoti Label
         $html = '';
@@ -18,6 +18,10 @@ class FormHelper
             $html .= ' '.$key.'="'.$element.'"';
         }
         $html .= ' >';
+
+        if($label != ''){
+            $html .= '<label>'.$label.'</label>';
+        }
         if($class != ''){
             $html = $this->wrapElement($class, $html);
         }
@@ -77,6 +81,7 @@ class FormHelper
             }
             $html .= '<label ' . $for . '>' . $label . '</label>';
         }
+
         $html .= '<textarea ';
         foreach ($attributes as $key => $element) {
             $html .= ' ' . $key . '="' . $element . '"';

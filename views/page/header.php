@@ -6,34 +6,20 @@
     <title>Your Blog</title>
     <link rel="stylesheet" type="text/css" href="http://194.5.157.92/phpObjektinis/resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="http://194.5.157.92/phpObjektinis/resources/css/style.css">
+    <script src="http://194.5.157.92/phpObjektinis/resources/js/jquery.js"></script>
+    <script src="http://194.5.157.92/phpObjektinis/resources/js/functions.js"></script>
+
 
 </head>
 <body>
 <header class="sechead">
     <div class="hwrapper">
         <div class="logotipas">
-            <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30164225/572.png">
+            <img src="https://www.pinclipart.com/picdir/big/4-48708_film-background-cliparts-movie-logo-without-background-png.png">
         </div>
         <nav>
-            <a href="<?php echo url('post'); ?>">Home</a>
-            <a href="<?php echo url('post'); ?>">Blog</a>
-            <?php if ($this->user):?>
-            <a href="<?php echo url('post/create'); ?>">Create Post</a>
-            <a href="<?php echo url('account/logout'); ?>">Logout</a>
-                <a href="<?php echo url('contact/contactForm'); ?>">Contact</a>
-            <?php else: ?>
-                <a href="<?php echo url('account/login'); ?>">Login</a>
-            <a href="<?php echo url('account/registration'); ?>">Register</a>
-            <a href="<?php echo url('contact/contactForm'); ?>">Contact</a>
-            <?php endif; ?>
-            <?php foreach ($this->categories as $category):?>
-                <a href="<?php echo url('category/show', $category->id) ?>"><?php echo $category->name; ?></a>
-            <?php endforeach; ?>
-            <div class="left-side">
-                <?php if ($this->user): ?>
-                    Hello, <?php echo $this->user->name; ?>
-            <?php endif; ?>
-            </div>
+            <a href="<?php echo url('filmai'); ?>">Bendras puslapis su Kino laiku</a>
+            <a href="<?php echo url('filmai/create'); ?>">Ideti kino seansa</a>
         </nav>
     </div>
 </header>

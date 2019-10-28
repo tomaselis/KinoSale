@@ -4,8 +4,8 @@ body {
 }
 
 .logotipas img {
-    width: 130px;
-    height: 100px;
+    width: 80px;
+    height: 60px;
 }
 
 header {
@@ -57,12 +57,15 @@ nav a:hover {
     width:100%;
     height: 100px;
     background-color: #9ed4ca;
+    /*position: absolute;*/
+    bottom: 0;
 }
 
 .secfoot h4 {
-    colour: #445045;
+    color: #445045;
     text-align: center;
     padding: 10px;
+
 }
 
 
@@ -97,9 +100,10 @@ nav a:hover {
     /*border: solid black 3px;*/
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: space-around;*/
+    justify-content: space-around;
     align-items: flex-start;
     width: 90%;
+    min-height: calc(100vh - 350px);
 }
 
 
@@ -117,24 +121,23 @@ nav a:hover {
 
 .cellone {
     width: 30%;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 .cell {
     display: flex;
     justify-content: center;
-    /*border: solid black 1px;*/
+    border: solid #9ed4ca 1px;
     padding: 10px;
     margin: 10px;
-    width: 100%;
-
-
+    box-shadow: inset 2px 2px 20px rgba(0,0,0,0.3);
 }
 
 .cell img {
     max-width:100%;
-    max-height:100%;
-    object-fit: contain;
-    box-sizing: border-box;
+    max-height:250px;
+    object-fit: cover;
+    /*box-shadow: inset 1px 1px 150px #000000;*/
+
 }
 
 
@@ -153,6 +156,7 @@ nav a:hover {
 
 .single-post div:last-child {
     padding: 0 30px;
+    margin-top: 30px;
 }
 
 
@@ -160,28 +164,55 @@ nav a:hover {
 /* post kurimo style sheetas */
 
 .wrapper{
+
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
     margin: 10px auto;
-    width: 900px;
+    width: 1500px;
     text-align: center;
-    background-color: #cccccc;
+    background-color: #e8eded;
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow:  0 0 10px  rgba(0,0,0,0.3);
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.wrapperReg{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    margin: 10px auto;
+    width: 600px;
+    text-align: center;
+    background-color: #e8eded;
+    border-radius: 10px;
+    box-shadow:  0 0 10px  rgba(0,0,0,0.3);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: calc(100vh - 300px);
+}
 .wrapper textarea {
     width: 70%;
     padding: 15px;
     margin: 5px 0 22px 0;
 }
+/*.email input {*/
+/*    width: 70%;*/
+/*    padding: 15px;*/
+/*    margin: 5px 0 22px 0;*/
+/*    display: inline-block;*/
+/*    border: none;*/
+/*    background: #f1f1f1;*/
+/*}*/
 
 input[type=text], input[type=password], input[type=email], input[type=number] {
-    width: 70%;
+    width: fit-content;
+
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
@@ -208,5 +239,146 @@ button {
 
 .headings {
     text-align: center;
+
+}
+table {
+    padding-left: 10px;
+    width: 1200px;
+}
+
+input[type=password].red {
+    border: 2px solid red;
+}
+
+.wrapper td:nth-child(3) {
+    width: 600px;
+}
+
+
+
+td:nth-child(4){
+    width: 400px;
+    height: 200px;
+}
+
+.adminImg {
+    width: 400px;
+    height: 200px;
+    padding: 10px 40px;
+}
+
+td, th{
+    padding-right:30px;
+}
+
+
+
+
+.wrapperPost {
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   align-content: center;
+   margin: 50px auto;
+   width: 1500px;
+   text-align: center;
+   background-color: #e8eded;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   padding-top: 10px;
+   padding-bottom: 10px;
+
+   }
+.img-wrap {
+
+
+    width:700px;
+    height:400px;
+    object-fit: cover;
+   margin: 30px;
+    border-radius: 10px;
+
+}
+
+.msg-block {
+
+    display: none;
+    width: fit-content;
+    padding: 10px;
+    margin: 20px auto;
+
+    background-color: #e8eded;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+
+}
+form {
+    /*min-height: calc(100vh - 300px);*/
+}
+
+/*dropdown button*/
+
+.dropbtn {
+    background-color: #efdccb;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #9ed4ca;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #9ed4ca;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #efdccb;}
+
+.show {display: block;}
+
+.wrapper-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 50px auto;
+    width: 400px;
+    text-align: center;
+    background-color: #e8eded;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: calc(100vh - 300px);
+}
+
+.wrapperReg {
+
+}
+
+.search-form {
 
 }

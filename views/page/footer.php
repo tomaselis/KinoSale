@@ -1,5 +1,5 @@
 <footer class="secfoot">
-    <h4>Copyright. Tomas Sabaliauskis.</h4>
+    <h4>Copyright. Tomas Sabaliauskis. Kino Sale</h4>
 </footer>
 
 </body>
