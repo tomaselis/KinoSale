@@ -18,8 +18,8 @@
             <img src="https://www.pinclipart.com/picdir/big/4-48708_film-background-cliparts-movie-logo-without-background-png.png">
         </div>
         <nav>
-            <a href="<?php echo url('filmai'); ?>">Bendras puslapis su Kino laiku</a>
-            <a href="<?php echo url('filmai/create'); ?>">Ideti kino seansa</a>
+            <a href="<?php echo url('film'); ?>">Bendras puslapis su Kino laiku</a>
+            <a href="<?php echo url('film/create'); ?>">Ideti kino seansa</a>
         </nav>
     </div>
 </header>

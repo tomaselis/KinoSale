@@ -95,20 +95,6 @@ class FormHelper
         $this->html .= $html;
         return $this;
     }
-//        //implementuoti Label
-//        $html = '';
-//        $html.= '<textarea name="'.$name.'"';
-//        foreach ($attributes as $key => $element){
-//            $html .= ' '.$key.'="'.$element.'"';
-//        }
-//        $html .= ' >';
-//        $html .= $value;
-//        $html .= '</textarea>';
-//        if($class != ''){
-//            $html = $this->wrapElement($class, $html);
-//        }
-//        $this->html .= $html;
-//        return $this;
 
     public function get()
     {

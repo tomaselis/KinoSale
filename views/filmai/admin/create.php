@@ -14,6 +14,6 @@
 <!--</form>-->
 
 
-<h2 class="headings">START YOUR BLOG</h2>
+<h2 class="headings">Ideti nauja filma</h2>
 <?php
 echo $this->form;

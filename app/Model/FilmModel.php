@@ -7,8 +7,9 @@ use Core\Database;
 
 class FilmModel
 {
-    private $id = NULL; //=NULL tada apacioje reiktu apsirasyti kad nelygus NULL
+    private $id = NULL;
     private $name;
+    private $amziausgrupe;
     private $image;
     private $active;
 
@@ -53,7 +54,7 @@ class FilmModel
 
     public function getAmziausgrupe()
     {
-        return $this->amaziausgrupe;
+        return $this->amziausgrupe;
     }
 
     public function getActive()
@@ -95,8 +96,8 @@ class FilmModel
     public function create()
     {
         $this->db = new Database();
-        $tableFields = "name, img, ";
-        $values = "'".$this->title."','".$this->content."','".$this->image."','".$this->amziausgrupe."'";
+        $tableFields = "name, amziausgrupe, img, ";
+        $values = "'".$this->name."','".$this->amziausgrupe."','".$this->image."','".$this->active."'";
         $this->db->insert('filmai', $tableFields, $values);
         $this->db->get();
     }

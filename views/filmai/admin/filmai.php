@@ -7,15 +7,15 @@
         <th>Image</th>
         <th>Action</th>
     </tr>
-    <?php foreach ($this->posts as $post):?>
+    <?php foreach ($this->filmai as $filmas):?>
         <tr>
-            <td><input name="post[]" type="checkbox" value="<?php echo $post->id ?>"></td>
-            <td><?php echo $post->title ?></td>
-            <td><?php echo $post->content ?></td>
-            <td><img class="adminImg" src="<?php echo mediaUrl(getImage($post->img, 300, 200)) ?>"></td>
+            <td><input name="post[]" type="checkbox" value="<?php echo $filmai->id ?>"></td>
+            <td><?php echo $filmas->name ?></td>
+            <td><?php echo $filmas->amziausgrupe ?></td>
+            <td><img class="adminImg" src="<?php echo mediaUrl(getImage($filmai->img, 300, 200)) ?>"></td>
             <td>
-                <a href="<?php echo url('post/edit', $post->id) ?>">EDIT</a>
-                <a href="<?php echo url('post/delete', $post->id)?>">DELETE</a>
+                <a href="<?php echo url('filmas/edit', $filmai->id) ?>">EDIT</a>
+                <a href="<?php echo url('filmas/delete', $filmai->id)?>">DELETE</a>
             </td>
 
         </tr>

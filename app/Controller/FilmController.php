@@ -18,8 +18,7 @@ class FilmController extends Controller
     public function index()
     {
         $this->view->filmai = \App\Model\FilmModel::getFilms();
-//        debug($this->view->posts);
-        $this->view->render('posts/posts');
+        $this->view->render('filmai/filmai');
 
     }
 
@@ -36,27 +35,23 @@ class FilmController extends Controller
 
     public function create()
     {
-        if (currentUser()) {
-//            $this->view->render('posts/admin/create');
 
-            //atvaizduoti create forma
-
-            $form = new \App\Helper\FormHelper(url('filmai/store'), 'filmai', 'wrapper');
+            $form = new \App\Helper\FormHelper(url('filmai/store'), 'post', 'wrapper');
             $form->addInput([
                 'name' => 'title',
                 'type' => 'text',
-                'placeholder' => 'Enter your Blog Title',
+                'placeholder' => 'Irasyti Filmo Pavadinima',
             ])
                 ->addTextarea([
                     'name' => 'content',
-                    'placeholder' => 'Write your blog here',
+                    'placeholder' => '',
                     'rows' => '10',
                     'cols' => '50',
                 ])
                 ->addInput([
                     'name' => 'img',
                     'type' => 'text',
-                    'placeholder' => 'Please insert link for you image here',
+                    'placeholder' => 'Ideti paveikslelio linka',
                 ])
                 ->addButton([
                     'name' => 'register',
@@ -65,10 +60,6 @@ class FilmController extends Controller
                 ], "", "button", "");
             $this->view->form = $form->get();
             $this->view->render('filmai/admin/create');
-
-        } else {
-            echo 404;
-        }
     }
 
     public function store()
@@ -78,10 +69,9 @@ class FilmController extends Controller
             //print_r($_POST);
             //die();
             $postModelObject = new \App\Model\FilmModel();
-            $postModelObject->setTitle($_POST['title']);
-            $postModelObject->setContent($_POST['name']);
+            $postModelObject->setTitle($_POST['name']);
+            $postModelObject->setAmziausgrupe($_POST['amziausgrupe']);
             $postModelObject->setImage($_POST['img']);
-            $postModelObject->setAuthorId(1);
             $postModelObject->save();
             $helper = new Helper();
             $helper->redirect('filmai/');
@@ -100,9 +90,6 @@ class FilmController extends Controller
         if (currentUser()) {
             $postModelObject = new FilmModel();
             $postModelObject->load($id);
-
-            //        $this->view->render('posts/admin/edit');
-
             $selectedCategories = [];
             foreach ($postModelObject->getCategories() as $cat) {
                 $selectedCategories[] = $cat->category_id;

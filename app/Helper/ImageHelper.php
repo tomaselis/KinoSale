@@ -6,8 +6,6 @@ use Intervention\Image\ImageManager;
 
 class ImageHelper
 {
-    // sukurti funkcija kuri ikelia img i server(TIK IKELIA)
-
     public static function uploadImage($directory, $fileName)
     {
         if (!file_exists($directory)) {
@@ -111,4 +109,3 @@ class ImageHelper
 
 }
 
-//VISKAS
